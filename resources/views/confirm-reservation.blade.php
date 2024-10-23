@@ -33,10 +33,18 @@
                             <th>Number</th>
                             <td id="output-number">{{$reservation->number}}</td>
                         </tr>
-                    </table>
+                </table>
+                <div class="reader">
+                    
+                </div>
             </div>
             @endforeach
             </div>
         </div>
     </div>
+    @foreach($not_visited_reservations as $reservation)
+    <script>
+    
+    </script>
+    @endforeach
 @endsection

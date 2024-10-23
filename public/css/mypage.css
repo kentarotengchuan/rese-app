@@ -4,6 +4,10 @@
 .delete-modal{
     display:none;
 }
+.qr-modal{
+    display:none;
+}
+
 
 .heart {
     font-size: 24px;

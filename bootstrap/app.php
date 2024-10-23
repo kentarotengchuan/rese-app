@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'visited' => MakeVisitedMiddleware::class,
+            'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

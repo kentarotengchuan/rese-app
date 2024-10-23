@@ -74,8 +74,22 @@
                             <td id="output-number">{{$reservation->number}}</td>
                         </tr>
                     </table>
-                    <!--QRコード発行-->
-                    
+                    <!--QRコード表示-->
+                    @if($reservation->visited == 'no')
+                    <button id="qr-button{{$reservation->id}}">QRコードを表示</button>
+                    <div id="qr-modal{{$reservation->id}}" class="qr-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button id="close-qr-button{{$reservation->id}}" class="close-qr-button">X</button>
+                            </div>
+                            <div class="modal-main">
+                                <div class="img__inner">
+                                    {{ QrCode::generate($reservation->qr_code_data) }}
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    @endif
                     <!--来店済み-->
                     @if($reservation->visited == 'yes')
                     <form action="{{ route('go-review',['id'=>$reservation->id]) }}" method="get">
@@ -127,6 +141,10 @@
         var deleteButton{{$reservation->id}} = document.getElementById(`delete-button{{$reservation->id}}`);
         var closeDeleteButton{{$reservation->id}} = document.getElementById(`close-delete-button{{$reservation->id}}`);
 
+        var qrModal{{$reservation->id}} = document.getElementById(`qr-modal{{$reservation->id}}`);
+        var qrButton{{$reservation->id}} = document.getElementById(`qr-button{{$reservation->id}}`);
+        var closeQrButton{{$reservation->id}} = document.getElementById(`close-qr-button{{$reservation->id}}`);
+
         changeButton{{$reservation->id}}.onclick = function() {
             changeModal{{$reservation->id}}.style.display = 'block';
             deleteModal{{$reservation->id}}.style.display = 'none';
@@ -143,6 +161,14 @@
 
         closeDeleteButton{{$reservation->id}}.onclick = function() {
             deleteModal{{$reservation->id}}.style.display = 'none';
+        }
+
+        qrButton{{$reservation->id}}.onclick = function() {
+            qrModal{{$reservation->id}}.style.display = 'block';
+        }
+
+        closeQrButton{{$reservation->id}}.onclick = function() {
+            qrModal{{$reservation->id}}.style.display = 'none';
         }
     </script>
     @endforeach

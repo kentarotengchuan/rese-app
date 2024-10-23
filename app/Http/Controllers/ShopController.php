@@ -14,6 +14,9 @@ use App\Http\Requests\ShopRequest;
 use Carbon\Carbon;
 use App\Mail\AdminSend;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -131,7 +134,7 @@ class ShopController extends Controller
             return redirect("/detail/$id")->with(compact('shop'))->with('please_set_later','過去の日時が選択されています');
         }
 
-        Reservation::create([
+        $reservation = Reservation::create([
             'user_id' => auth()->user()->id,
             'shop_id' => $id,
             'date' => $request->date,
@@ -140,7 +143,11 @@ class ShopController extends Controller
             'visited' => 'no',
             'reviewed' => 'no',
             'reminded' => 'no',
+            'qr_code_data' => uniqid(),
         ]);
+
+        //$fileName = "qr_codes/$reservation->qr_code_data.png";
+        //$reservation->update(['qr_code_data' => $fileName]);
 
         $shop = Shop::findOrFail($id);
 
@@ -340,5 +347,24 @@ class ShopController extends Controller
         }
 
         return redirect('/control')->with('success_send','メールの送信に成功しました');
+    }
+
+    public function verifyQrCode(Request $request)
+    {
+    // スキャンしたQRコードデータを取得
+    $qrCodeData = $request->input('qr_code_data'); // 例: uniqid() など
+
+    // QRコードデータを使って予約を照合
+    $reservation = Reservation::where('qr_code_data', $qrCodeData)->first();
+
+    if ($reservation) {
+        // 来店確認処理を行う
+        return response()->json([
+            'message' => '来店確認完了',
+            'reservation' => $reservation
+        ]);
+    }
+
+    return response()->json(['message' => '無効なQRコード'], 404);
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('visited');
             $table->text('reviewed');
             $table->text('reminded');
+            $table->string('qr_code_data')->unique();
             $table->timestamps();
         });
     }
