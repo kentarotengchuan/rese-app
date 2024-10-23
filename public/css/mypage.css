@@ -1,0 +1,19 @@
+.change-modal{
+    display:none;
+}
+.delete-modal{
+    display:none;
+}
+
+.heart {
+    font-size: 24px;
+    color: gray;
+    /* デフォルトの色 */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.heart.liked {
+    color: pink;
+    /* いいねされたときの色 */
+}
