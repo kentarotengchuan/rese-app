@@ -29,7 +29,7 @@
             @foreach ($shops as $shop)
                 <div class="box__shop">
                     <div class="img__inner">
-                        <img src="" alt="">
+                        <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
                     </div>
                     <h2 class="ttl__shop">{{$shop->name}}</h2>
                     <div class="tags__shop">

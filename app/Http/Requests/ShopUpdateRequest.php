@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShopRequest extends FormRequest
+class ShopUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,6 @@ class ShopRequest extends FormRequest
             'area' => 'required|max:20',
             'genre' => 'required|max:20',
             'description' => 'max:300',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', 
         ];
     }
 
@@ -39,12 +38,7 @@ class ShopRequest extends FormRequest
             'area.max' => '地域名は20文字以内で入力してください',
             'genre.required' => 'ジャンル名を入力してください',
             'genre.max' => 'ジャンル名は20文字以内で入力してください',
-            'description.max' => '説明文は300文字以内で入力してください',
-            'image.required' => '画像をアップロードしてください',
-            'image.image' => 'ファイルは画像形式でアップロードしてください',
-            'image.required' => '画像をアップロードしてください',
-            'image.mimes' => '対応していない拡張子です',
-            'image.max' => 'ファイル名が長すぎます',
+            'description.max' => '説明文は300文字以内で入力してください'
         ];
     }
 }

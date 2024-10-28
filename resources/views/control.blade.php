@@ -79,7 +79,7 @@
         <div class="control__shop">
             <div class="box__create">
                 <p class="ttl__create">店舗情報の作成</p>
-                <form action=" {{route('create-shop')}} " method="post">
+                <form action=" {{route('create-shop')}} " method="post" enctype="multipart/form-data">
                 @csrf
                     <div class="form__name">
                         <input type="text" name="name" id="name" placeholder="店舗名">
@@ -113,7 +113,16 @@
                         </p>
                         @enderror
                     </div>
+                    <div class="form__img">
+                        <input type="file" name="image" id="image">
+                        @error('image')
+                        <p class="error-message">
+                        {{$errors->first('image')}}
+                        </p>
+                        @enderror
+                    </div>
                     <button type="submit">作成</button>
+                    
                 </form>
             </div>
             <div class="box__shops">
@@ -121,7 +130,7 @@
                 @foreach ($user->own as $shop)
                 <div class="shop-info">
                     <div class="img__inner">
-                        <img src="" alt="">
+                        <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
                     </div>
                     <h2 class="ttl__shop">{{$shop->name}}</h2>
                     <div class="tags__shop">

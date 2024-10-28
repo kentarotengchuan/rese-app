@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('genre_id')->constrained()->cascadeOnDelete()->cacadeOnUpdate();
             $table->string('name')->unique();
             $table->string('description')->nullable();
+            $table->string('img_path');
             $table->timestamps();
         });
     }

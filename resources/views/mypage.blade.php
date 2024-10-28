@@ -92,9 +92,15 @@
                     @endif
                     <!--来店済み-->
                     @if($reservation->visited == 'yes')
-                    <form action="{{ route('go-review',['id'=>$reservation->id]) }}" method="get">
+                    <div class="buttons">
+                        <form action="{{ route('go-payment',['id'=>$reservation->id]) }}" method="get">
+                            <button type="submit" name="from" value="mypage">Stripe決済</button>
+                        </form>
+                        <form action="{{ route('go-review',['id'=>$reservation->id]) }}" method="get">
                         <button type="submit" name="from" value="mypage">レビューする</button>
-                    </form>
+                        </form>
+                    </div>
+                    
                     @endif
                 </div>
                 </div>
@@ -107,7 +113,7 @@
             @foreach ($user->shops as $shop)
                 <div class="box__shop">
                     <div class="img__inner">
-                        <img src="" alt="">
+                        <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
                     </div>
                     <h2 class="ttl__shop">{{$shop->name}}</h2>
                     <div class="tags__shop">

@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/thanks',[RegisteredUserController::class,'thanks'])->name('thanks');
 
-Route::middleware(['auth','visited','verified'])->
+Route::middleware(['auth','verified'])->
 group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -31,6 +31,11 @@ group(function () {
     Route::post('mypage/delete-reservation/{id}',[ShopController::class,'delete'])->name('delete-reservation');
     Route::post('mypage/like/{id}',[ShopController::class,'likeOnMypage'])->name('like-on-mypage');
 
+    Route::get('mypage/payment/{id}',[ShopController::class,'goPayment'])->name('go-payment');
+    Route::post('mypage/payment/checkout', [ShopController::class, 'payment'])->name('payment.session');
+    Route::get('/success', [ShopController::class, 'success'])->name('payment.success');
+    Route::get('/cancel', [ShopController::class, 'cancel'])->name('payment.cancel');
+
     Route::get('mypage/review/{id}',[ShopController::class,'goReview'])->name('go-review');
     Route::post('mypage/review/post',[ShopController::class,'review'])->name('review');
 
@@ -39,7 +44,7 @@ group(function () {
     Route::post('/control/updated',[ShopController::class,'update'])->name('update-shop');
     Route::get('/control/confirm-reservation/{id}',[ShopController::class,'goConfirm'])->name('go-confirm');
     Route::post('/control/send-email',[ShopController::class,'send'])->name('send-email');
-
+    Route::post('/control/qr-code', [ShopController::class, 'sendQR']);
 });
 
 require __DIR__.'/auth.php';

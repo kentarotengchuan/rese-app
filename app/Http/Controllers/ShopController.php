@@ -15,8 +15,10 @@ use Carbon\Carbon;
 use App\Mail\AdminSend;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
 use Illuminate\Support\Facades\Storage;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+use App\Http\Requests\ShopUpdateRequest;
 
 class ShopController extends Controller
 {
@@ -240,12 +242,17 @@ class ShopController extends Controller
             ]);
         }
 
+        $image = $request->file('image');
+        $fileName = time() . '_' . uniqid() . ".jpg";
+        $filePath = $image->storeAs('shop_images', $fileName);
+
         Shop::create([
             'user_id' => auth()->id(),
             'area_id' => $area->id,
             'genre_id' => $genre->id,
             'name' => $request->name,
-            'description' => $request->description
+            'description' => $request->description,
+            'img_path' => $fileName,
         ]);
 
         return redirect('control');
@@ -263,7 +270,7 @@ class ShopController extends Controller
         return view('shop-update',compact('shop'));
     }
 
-    public function update(ShopRequest $request){
+    public function update(ShopUpdateRequest $request){
         if(Area::where('name',"$request->area")->exists()){
             $area = Area::where('name',"$request->area")->first();
         }else{
@@ -280,6 +287,21 @@ class ShopController extends Controller
             ]);
         }
 
+        if($request->hasFile('image')){
+            $request->validate([
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+            ]);
+            
+            $image = $request->file('image');
+            $fileName = time() . '_' . uniqid() . ".jpg";
+            $filePath = $image->storeAs('shop_images', $fileName);
+            $shop = Shop::findOrFail($request->id)
+            ->update([
+                'img_path' => $fileName    
+            ]);
+            //Storage::delete('storage/shop_images/'.$shop->img_path);
+        }
+
         $shop =Shop::findOrFail($request->id)
         ->update([
             'name' => $request->name,
@@ -292,8 +314,8 @@ class ShopController extends Controller
     }
 
     public function goConfirm(Request $request,$id){
-        $not_visited_reservations = Reservation::where('shop_id',$id)
-        ->where('visited','no')->get();
+        $reservations = Reservation::where('shop_id',$id)
+        ->get();
 
         if($request->input("from") == "control"){
             $request->session()->put('jump_from','control');
@@ -301,7 +323,7 @@ class ShopController extends Controller
             $request->session()->put('jump_from','');
         }
 
-        return view('confirm-reservation',compact('not_visited_reservations'));
+        return view('confirm-reservation',compact('reservations'));
     }
 
     public function goReview(Request $request,$id){
@@ -349,22 +371,81 @@ class ShopController extends Controller
         return redirect('/control')->with('success_send','メールの送信に成功しました');
     }
 
-    public function verifyQrCode(Request $request)
+    public function sendQr(Request $request)
     {
-    // スキャンしたQRコードデータを取得
-    $qrCodeData = $request->input('qr_code_data'); // 例: uniqid() など
-
-    // QRコードデータを使って予約を照合
-    $reservation = Reservation::where('qr_code_data', $qrCodeData)->first();
-
-    if ($reservation) {
-        // 来店確認処理を行う
-        return response()->json([
-            'message' => '来店確認完了',
-            'reservation' => $reservation
-        ]);
+        try{
+        $qrdata = $request->input('qr_code_data');
+        $reservation_id = $request->input('id');
+        $reservation = Reservation::findOrFail($reservation_id);
+        
+        if($reservation->qr_code_data == $qrdata){
+            Reservation::findOrFail($reservation_id)
+            ->update([
+                'visited' => 'yes',
+            ]);
+            return response()->json([
+                'message' => 'QRコードが照合されました。',
+                'status' => 'success'
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'QRコードが一致しません。',
+                'status' => 'error'
+            ], 400); 
+        }
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'サーバーエラーが発生しました。',
+                'status' => 'error'
+            ],500);
+        }
     }
 
-    return response()->json(['message' => '無効なQRコード'], 404);
+    public function goPayment(Request $request,$id){
+        $reservation = Reservation::findOrFail($id);
+
+        if($request->input("from") == "mypage"){
+            $request->session()->put('jump_from','mypage');
+        }else{
+            $request->session()->put('jump_from','');
+        }
+
+        return view('payment',compact('reservation'));
+    }
+
+    public function payment(Request $request)
+    {
+        // Stripeシークレットキーをセット
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // リクエストからユーザーが入力した金額を取得
+        $amount = $request->input('amount');
+        $name = $request->input('name');
+
+        // 金額のバリデーション（念のため）
+        if ($amount < 1) {
+            return response()->json(['error' => '金額が不正です'], 400);
+        }
+
+        // StripeのCheckoutセッションを作成
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $name,
+                    ],
+                    'unit_amount' => $amount, // 金額（最小単位、円の場合は100分の1単位）
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('payment.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('payment.cancel'),
+        ]);
+
+        // セッションIDを返す
+        return response()->json(['id' => $session->id]);
     }
 }

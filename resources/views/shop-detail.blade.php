@@ -12,7 +12,7 @@
             <span class="nav__ttl">{{$shop->name}}</span>
         </div>
         <div class="img__inner">
-            <img src="" alt="">
+            <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
         </div>
         <div class="tags__shop">
             <span class="area-tag">#{{$shop->area->name}}</span>

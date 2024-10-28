@@ -10,9 +10,12 @@
                 @csrf
                 <button type="submit"><</button>
             </form>
-                <p class="ttl__create">店舗情報の更新</p>
+            <p class="ttl__create">店舗情報の更新</p>
+            <div class="img__inner">
+                <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
             </div>
-            <form action=" {{route('update-shop')}} " method="post">
+            </div>
+            <form action=" {{route('update-shop')}} " method="post" enctype="multipart/form-data">
             @csrf
                 <input type="hidden" name="id" id="id" value="{{$shop->id}}">
                 <div class="form__name">
@@ -47,6 +50,14 @@
                     </p>
                     @enderror
                 </div>
+                <div class="form__img">
+                        <input type="file" name="image" id="image">
+                        @error('image')
+                        <p class="error-message">
+                        {{$errors->first('image')}}
+                        </p>
+                        @enderror
+                    </div>
                 <button type="submit">更新</button>
             </form>
         </div>

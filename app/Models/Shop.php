@@ -12,6 +12,7 @@ class Shop extends Model
         'area_id',
         'genre_id',
         'description',
+        'img_path',
     ];
 
     public function area(){
