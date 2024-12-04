@@ -7,39 +7,6 @@
     <link rel="stylesheet" href="{{asset('css/sanitize.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     @yield('css')
-    <style>
-    .modal {
-            display: none; /* 初期状態は非表示 */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            margin:8px;
-            background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* 中央に配置 */
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 100%; /* 幅を調整 */
-            height:100%;
-            /*max-width: 500px; /* 最大幅を設定 */
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
     <header>

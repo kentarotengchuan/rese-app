@@ -1,0 +1,33 @@
+.content {
+    padding: 24px 72px 0;
+}
+
+.box__thanks {
+    width: 600px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 18px;
+    padding: 144px 72px;
+    text-align: center;
+}
+
+.thanks__text {
+    font-size: 24px;
+}
+
+.box__thanks button {
+    margin-top: 72px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 959px) {
+    .box__thanks {
+        width: 95%;
+        padding: 24px;
+    }
+}

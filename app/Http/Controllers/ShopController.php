@@ -145,6 +145,7 @@ class ShopController extends Controller
             'visited' => 'no',
             'reviewed' => 'no',
             'reminded' => 'no',
+            'paid' => 'no',
             'qr_code_data' => uniqid(),
         ]);
 
@@ -158,7 +159,8 @@ class ShopController extends Controller
 
     public function mypage(){
         $user = auth()->user();
-        $not_reviewed_reservations  = Reservation::where('reviewed','no')->get();
+        $not_reviewed_reservations  = Reservation::where('user_id',"$user->id")
+        ->where('reviewed','no')->get();
 
         return view('mypage',compact('user','not_reviewed_reservations'));
     }
@@ -255,7 +257,7 @@ class ShopController extends Controller
             'img_path' => $fileName,
         ]);
 
-        return redirect('control');
+        return redirect('control')->with('flash_message','店舗が作成されました。');
     }
 
     public function goUpdate(Request $request,$id){
@@ -415,6 +417,7 @@ class ShopController extends Controller
 
     public function payment(Request $request)
     {
+        try{
         // Stripeシークレットキーをセット
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -447,5 +450,16 @@ class ShopController extends Controller
 
         // セッションIDを返す
         return response()->json(['id' => $session->id]);
+        }catch(Exception $e){
+        return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function success(Request $request){
+        return view('success');
+    }
+
+    public function cancel(Request $request){
+        return view('cancel');
     }
 }

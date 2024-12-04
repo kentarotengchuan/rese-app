@@ -34,16 +34,16 @@
 
         document.getElementById('payment-button').addEventListener('click', function () {
             const amount = document.getElementById('amount').value;
-            const name = document.getElementById('shop-name').value;
+            const name = `{{$reservation->shop->name}}`;
 
-            fetch('checkout', {
+            fetch('/mypage/payment/checkout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 },
                 body: JSON.stringify({
-                    amount: amount * 100,
+                    amount: amount,
                     name: name,
                 })
             })

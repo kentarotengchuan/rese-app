@@ -4,6 +4,7 @@
 @endsection
 @section('main')
     <div class="content">
+    <div class="left">
         <div class="nav">
             <form action="{{ route('back') }}" method="post">
             @csrf
@@ -21,6 +22,8 @@
         <div class="description__shop">
             <p class="description-text">{{$shop->description}}</p>
         </div>
+    </div>
+    <div class="right">
         <div class="form__reservation">         
             <p class="form__ttl">予約</p>
             @if (session('please_set_later'))
@@ -28,17 +31,17 @@
             @endif
             @error('date')
             <p class="error-message">
-                {{$errors->first('date')}}
+                ※{{$errors->first('date')}}
             </p>
             @enderror
             @error('time')
             <p class="error-message">
-                {{$errors->first('time')}}
+                ※{{$errors->first('time')}}
             </p>
             @enderror
             @error('number')
             <p class="error-message">
-                {{$errors->first('number')}}
+                ※{{$errors->first('number')}}
             </p>
             @enderror
             <form action="{{ route('reserve',['id'=>$shop->id]) }}" method="post" id="reservation">
@@ -73,11 +76,12 @@
                         <td id="output-number"></td>
                     </tr>
                 </table>
-            </div>
-            <div class="button__inner">
-                <button type="submit" form="reservation">予約する</button>
-            </div>
-        </div>  
+            </div>   
+        </div>
+        <div class="button__inner">
+            <button type="submit" form="reservation">予約する</button>
+        </div> 
+    </div> 
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

@@ -13,7 +13,13 @@
         @if(session('success_send'))
         <p class="success_message">{{session('success_send')}}</p>
         @endif
+        @if(session('flash_message'))
+        <p class="flash_message">
+            {{session('flash_message')}}
+        </p>
+        @endif
         @if($user->role->name == 'admin')
+        <div class="control__user">
         <div class="box__create">
             <p class="ttl__create">店舗代表者ユーザーの作成</p>
             <form method="POST" action="{{ route('register-owner') }}" id="register">
@@ -31,9 +37,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     <input type="email" name="email" id="email" placeholder="Email">
                     @error('email')
-                    <p class="error-message">
-                    {{$errors->first('email')}}
-                    </p>
+                        <p class="error-message">
+                        {{$errors->first('email')}}
+                        </p>
                     @enderror
                 </div>
                 <div class="form__password">
@@ -49,11 +55,7 @@
             <div class="button__outer">
                 <button type="submit" form="register">登録</button>
             </div>
-            @if(session('flash_message'))
-            <div class="flash_message">
-                {{session('flash_message')}}
-            </div>
-            @endif
+            
         </div>
         <div class="box__send-email">
             <p class="box__ttl">お知らせメールの送信</p>
@@ -62,21 +64,21 @@
                 <div class="form__title">
                     <input type="text" name="title" id="title" placeholder="メールのタイトルを入力">
                     @error('title')
-                    <p class="error_message">{{$errors->first('title')}}</p>
+                    <p class="error-message">{{$errors->first('title')}}</p>
                     @enderror
                 </div>
                 <div class="form__content">
                     <textarea name="content" id="content" cols="30" rows="10" placeholder="メールの本文を入力"></textarea>
                     @error('content')
-                    <p class="error_message">{{$errors->first('content')}}</p>
+                    <p class="error-message">{{$errors->first('content')}}</p>
                     @enderror
                 </div>
                 <button type="submit">メール送信</button>
             </form>
+        </div>
         </div>           
         @endif
         @if($user->role->name == 'owner')
-        <div class="control__shop">
             <div class="box__create">
                 <p class="ttl__create">店舗情報の作成</p>
                 <form action=" {{route('create-shop')}} " method="post" enctype="multipart/form-data">
@@ -126,7 +128,7 @@
                 </form>
             </div>
             <div class="box__shops">
-                <p class="ttl__shops">店舗の一覧</p>
+                <p class="ttl__shops">作成店舗の一覧</p>
                 @foreach ($user->own as $shop)
                 <div class="shop-info">
                     <div class="img__inner">
@@ -140,22 +142,21 @@
                     <div class="buttons">
                         <form action="{{ route('detail',['id'=>$shop->id]) }}" method="get">
                         @csrf
-                            <button type="submit" name="from" value="control">詳しく見る</button>
+                            <button type="submit" name="from" value="control">詳細画面</button>
                         </form>
                         <!--店舗情報の更新-->
                         <form action=" {{route('go-update',['id'=>$shop->id])}} " method="get">
-                            <button type="submit" name="from" value="control">店舗情報の更新</button>
+                            <button type="submit" name="from" value="control">店舗更新</button>
                         </form>
                         <!--予約情報の確認-->
                         <form action=" {{route('go-confirm',['id'=>$shop->id])}} " method="get">
-                            <button type="submit" name="from" value="control">予約情報の確認</button>
+                            <button type="submit" name="from" value="control">予約確認</button>
                         </form>
                     </div>
 
                 </div>
                 @endforeach
             </div>
-        </div>
         @endif
     </div>
 @endsection

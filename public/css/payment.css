@@ -1,0 +1,75 @@
+.content {
+    padding: 0 72px;
+    text-align: center;
+}
+
+.nav {
+    margin: 24px 0 24px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.nav button {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.ttl {
+    padding-top: 6px;
+    margin-left: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.message {
+    color: #305DFF;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.box__payment {
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    background-color: #FFFFFF;
+    font-size: 24px;
+}
+
+.box__ttl {
+    background-color: #0538FF;
+    color: #FFFFFF;
+    padding: 12px 24px;
+    border-radius: 5px 5px 0 0;
+}
+
+.form__review {
+    margin-top: 24px;
+    font-size: 18px;
+}
+
+.form__review input {
+    border: 1px solid #000000;
+}
+
+.form__review button {
+    margin: 24px 0 12px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 959px) {
+    .box__payment {
+        width: 100%;
+    }
+
+    .form__review input {
+        width: 90%
+    }
+}

@@ -1,30 +1,9 @@
-@extends('layouts.app-ex')
+@extends('layouts.app')
 @section('css')
 <link rel="stylesheet" href="{{asset('css/shop-all.css')}}">
 @endsection
 @section('main')
-    <div class="content">
-        <div class="form__search">
-            <form action="{{route('index')}}" method="get">
-                <select name="area" id="area" onchange="this.form.submit()">
-                    <option value="all">All</option>
-                    @foreach ($areas as $area)
-                    <option value="{{$area->id}}" {{request('area') == $area->id ? 'selected' : ''}}>
-                        {{$area->name}}
-                    </option>
-                    @endforeach
-                </select>
-                <select name="genre" id="genre" onchange="this.form.submit()">
-                    <option value="all">All</option>
-                    @foreach ($genres as $genre)
-                    <option value="{{$genre->id}}" {{request('genre') == $genre->id ? 'selected' : ''}}>
-                        {{$genre->name}}
-                    </option>
-                    @endforeach
-                </select>
-                <input type="text" name="search" id="search" value="{{ request('search') }}" placeholder="Search…">
-            </form>
-        </div>
+    <div class="content">       
         <div class="flex">
             @foreach ($shops as $shop)
                 <div class="box__shop">
@@ -39,7 +18,7 @@
                     <div class="buttons">
                         <form action="{{ route('detail',['id'=>$shop->id]) }}" method="get">
                         @csrf
-                            <button type="submit" name="from" value="index">詳しく見る</button>
+                            <button class="button__detail" type="submit" name="from" value="index">詳しく見る</button>
                         </form>
                         <form action="{{ route('like',['id'=>$shop->id]) }}" method="post">
                         @csrf

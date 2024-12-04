@@ -33,8 +33,8 @@ group(function () {
 
     Route::get('mypage/payment/{id}',[ShopController::class,'goPayment'])->name('go-payment');
     Route::post('mypage/payment/checkout', [ShopController::class, 'payment'])->name('payment.session');
-    Route::get('/success', [ShopController::class, 'success'])->name('payment.success');
-    Route::get('/cancel', [ShopController::class, 'cancel'])->name('payment.cancel');
+    Route::get('/payment/success', [ShopController::class, 'success'])->name('payment.success');
+    Route::get('/payment/cancel', [ShopController::class, 'cancel'])->name('payment.cancel');
 
     Route::get('mypage/review/{id}',[ShopController::class,'goReview'])->name('go-review');
     Route::post('mypage/review/post',[ShopController::class,'review'])->name('review');

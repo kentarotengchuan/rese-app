@@ -1,0 +1,50 @@
+.content {
+    padding: 24px 72px 0;
+}
+
+.box__verify {
+    padding: 120px 72px;
+    width: 720px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 18px;
+}
+
+.verify-message {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons button {
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 959px) {
+    .box__verify {
+        padding: 24px;
+        width: 100%;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        border-radius: 5px;
+        box-shadow: 3px 3px #B1B1B1;
+        font-size: 12px;
+    }
+
+    .buttons button {
+        background-color: #305DFF;
+        color: #FFFFFF;
+        padding: 6px;
+        border-radius: 5px;
+    }
+}

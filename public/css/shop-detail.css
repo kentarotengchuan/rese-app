@@ -1,0 +1,140 @@
+header {
+    display: inline-block;
+}
+
+.content {
+    padding: 0 72px 24px;
+    display: flex;
+    gap: 72px;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.nav {
+    margin: 24px 0 24px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.nav button {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.nav__ttl {
+    padding-top: 6px;
+    margin-left: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.tags__shop {
+    margin: 24px 0;
+}
+
+.form__reservation {
+    padding: 28px 24px;
+    background-color: #305DFF;
+    border-radius: 5px 5px 0 0;
+}
+
+.form__ttl {
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+.error-message {
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.form__reservation input {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 18px;
+    background-color: #FFFFFF;
+    width: 40%;
+}
+
+.form__reservation #time {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 18px;
+    background-color: #FFFFFF;
+    width: 95%;
+}
+
+.form__reservation select {
+    width: 95%;
+    display: block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 18px;
+    background-color: #FFFFFF;
+}
+
+.confirm {
+    width: 90%;
+    margin: 18px 0 240px;
+    background-color: #4D7FFF;
+    color: #FFFFFF;
+    padding: 28px 12px;
+    border-radius: 3%;
+    font-size: 18px;
+}
+
+.table__confirm {
+    row-gap: 6px;
+    column-gap: 12px;
+}
+
+.button__inner {
+    width: 100%;
+    background-color: #0538FF;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+}
+
+.button__inner button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 0 0 5px 5px;
+}
+
+@media screen and (max-width: 959px) {
+    .content {
+        display: block;
+    }
+
+    .form__reservation {
+        margin-top: 24px;
+
+    }
+
+    .form__reservation input {
+        width: 95%;
+    }
+
+    .confirm {
+        margin: 18px 0;
+    }
+}
+
+[e

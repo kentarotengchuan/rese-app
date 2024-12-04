@@ -4,17 +4,17 @@
 @endsection
 @section('main')
     <div class="content">
-        <div class="box__create">
+        <div class="box__update">
             <div class="nav">
                 <form action="{{ route('back') }}" method="post">
                 @csrf
-                <button type="submit"><</button>
-            </form>
-            <p class="ttl__create">店舗情報の更新</p>
+                    <button type="submit"><</button>
+                </form>
+                <p class="ttl__create">店舗情報の更新</p>
+            </div>
             <div class="img__inner">
                 <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
-            </div>
-            </div>
+            </div>           
             <form action=" {{route('update-shop')}} " method="post" enctype="multipart/form-data">
             @csrf
                 <input type="hidden" name="id" id="id" value="{{$shop->id}}">

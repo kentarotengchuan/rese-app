@@ -1,0 +1,88 @@
+.content {
+    padding: 0 72px 24px;
+    text-align: center;
+}
+
+.nav {
+    margin: 24px 0 24px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.nav button {
+    background-color: #FFFFFF;
+    color: #000000;
+    font-weight: bold;
+    padding: 6px 8px;
+    border-radius: 5px;
+}
+
+.ttl__create {
+    padding-top: 6px;
+    margin-left: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+img {
+    max-width: 480px;
+    height: auto;
+    object-fit: cover;
+}
+
+.box__update {
+    text-align: center;
+}
+
+.box__update input {
+    margin-top: 24px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.box__update textarea {
+    margin-top: 24px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.box__update input {
+    margin-top: 24px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.form__img input {
+    margin-top: 24px;
+    padding: 0px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+.box__update>form>button {
+    margin-top: 24px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 8px 24px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 959px) {
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .box__update textarea {
+        width: 100%;
+    }
+
+    .form__img input {
+        width: 100%;
+    }
+}

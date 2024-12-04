@@ -1,0 +1,39 @@
+.content {
+    padding: 0 72px;
+}
+
+.box__success {
+    width: 50%;
+    margin: 0 auto;
+    padding: 240px 24px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.box__success h1 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.box__success a {
+    margin-top: 24px;
+    font-size: 24px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 959px) {
+    .box__success {
+        width: 100%;
+        padding: 24px;
+    }
+
+    .box__success a {
+        font-size: 12px;
+        padding: 6px;
+    }
+}

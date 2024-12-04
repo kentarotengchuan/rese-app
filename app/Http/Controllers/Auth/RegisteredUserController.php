@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        //Auth::login($user);
+        Auth::login($user);
 
         return redirect(route('thanks', absolute: false));
     }
@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect(route('control', absolute: false))->with('flash_message','ユーザーが作成されました。認証メールをご確認ください。');
+        return redirect(route('control', absolute: false))->with('flash_message','ユーザーが作成されました。ログアウト後、認証メールをご確認ください。');
     }
 
     public function thanks(){

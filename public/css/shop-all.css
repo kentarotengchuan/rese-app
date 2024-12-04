@@ -1,5 +1,5 @@
 .heart {
-    font-size: 24px;
+    font-size: 36px;
     color: gray;
     /* デフォルトの色 */
     cursor: pointer;
@@ -9,4 +9,125 @@
 .heart.liked {
     color: pink;
     /* いいねされたときの色 */
+}
+
+.header__inner {
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 72px;
+    align-items: center;
+}
+
+.form__search {
+    width: 50%;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 14px;
+}
+
+select {
+    width: 15%;
+    padding: 12px 6px;
+    border-right: 1px solid #EEEEEE;
+}
+
+input {
+    width: 60%;
+}
+
+.content {
+    padding: 12px 72px 24px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 1%;
+}
+
+.box__shop {
+    width: 380px;
+    height: 360px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 18px;
+}
+
+img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.ttl__shop {
+    padding: 36px 5% 0 5%;
+    font-size: 32px;
+}
+
+.tags__shop {
+    padding: 12px 5% 0 5%;
+}
+
+.tags__shop span {
+    font-size: 18px;
+}
+
+.buttons {
+    padding: 12px 5% 0 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button__detail {
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 959px) {
+    header {
+        flex-wrap: wrap;
+    }
+
+    .form__search {
+        margin-top: 24px;
+        width: 100%;
+    }
+
+    .form__search form {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .form__search form select {
+        width: 50%;
+    }
+
+    .form__search form input {
+        padding: 12px 6px;
+        width: 100%;
+        border-top: 1px solid #EEEEEE;
+    }
+
+    .ttl__shop {
+        padding: 5% 5% 0 5%;
+    }
+
+    .box__shop {
+        height: 300px;
+    }
+
+    img {
+        height: 150px;
+    }
 }

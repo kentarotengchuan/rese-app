@@ -1,23 +1,269 @@
-.change-modal{
-    display:none;
-}
-.delete-modal{
-    display:none;
-}
-.qr-modal{
-    display:none;
+.change-modal {
+    display: none;
 }
 
+.delete-modal {
+    display: none;
+}
+
+.qr-modal {
+    display: none;
+}
+
+.content {
+    padding: 0 72px 24px;
+    display: flex;
+    gap: 72px;
+}
+
+.username {
+    width: 100%;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.left {
+    width: 30%;
+    flex: 2;
+}
+
+.right {
+    width: 60%;
+    flex: 3;
+}
+
+.my-reservations {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ttl {
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 36px;
+}
+
+.error-message {
+    width: 100%;
+    color: red;
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+.box__reservation {
+    margin-top: 36px;
+    padding: 28px;
+    width: 100%;
+    background-color: #305DFF;
+    color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 18px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.iteration {
+    padding-top: 6px;
+    display: inline-block;
+}
+
+.reservation-info {
+    font-size: 24px;
+    margin-top: 48px;
+    text-align: center;
+}
+
+.reservation-info td {
+    padding-left: 48px;
+    padding-bottom: 24px;
+}
+
+.reservation-info>button {
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    color: #305DFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+.reservation-info .buttons button {
+    margin-top: 24px;
+    background-color: #FFFFFF;
+    color: #305DFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+.change-modal {
+    padding-bottom: 12px;
+    margin-top: 24px;
+    background-color: #4D7FFF;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.change-modal input {
+    margin: 12px auto 0;
+    background-color: #FFFFFF;
+    color: #000000;
+
+    border-radius: 5px;
+}
+
+.change-modal .buttons {
+    margin-top: 12px;
+}
+
+.change-modal button {
+    font-size: 12px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+.delete-modal {
+    padding: 12px;
+    margin-top: 24px;
+    background-color: #4D7FFF;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.delete-modal button {
+    font-size: 12px;
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
+
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #EEEEEE;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px 72px;
+    width: 100%;
+    height: 100%;
+    color: #000000;
+}
+
+.modal-header {
+    margin-bottom: 24px;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+}
+
+.box__shop {
+    margin-top: 36px;
+    width: 480px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 3px 3px #B1B1B1;
+    font-size: 18px;
+}
+
+.box__shop img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 5px 5px 0 0;
+}
+
+.ttl__shop {
+    padding: 36px 5% 0 5%;
+    font-size: 32px;
+}
+
+.tags__shop {
+    padding: 12px 5% 0 5%;
+}
+
+.tags__shop span {
+    font-size: 18px;
+}
+
+.box__shop .buttons {
+    margin-bottom: 12px;
+    padding: 12px 5% 0 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button__detail {
+    background-color: #305DFF;
+    color: #FFFFFF;
+    padding: 6px 18px;
+    border-radius: 5px;
+}
 
 .heart {
-    font-size: 24px;
+    font-size: 36px;
     color: gray;
-    /* デフォルトの色 */
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .heart.liked {
     color: pink;
-    /* いいねされたときの色 */
+}
+
+@media screen and (max-width: 959px) {
+    .content {
+        display: block;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .reservation-info {
+        margin-top: 24px;
+    }
+
+    .reservation-info td {
+        padding: 0 0 6px 6px;
+    }
+
+    .box__shop {
+        height: 300px;
+    }
+
+    .box__shop img {
+        height: 150px;
+    }
+
+    .ttl__shop {
+        padding: 5% 5% 0 5%;
+    }
+
+    .table__confirm {
+        font-size: 18px
+    }
 }
