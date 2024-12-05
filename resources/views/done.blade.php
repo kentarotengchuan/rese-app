@@ -8,7 +8,7 @@
             <p class="thanks__text">ご予約ありがとうございます</p>
             <form action="{{ route('detail',['id'=>$shop->id]) }}" method="get">
             @csrf
-                <button type="submit">戻る</button>
+                <button class="button__thanks" type="submit">戻る</button>
             </form>
         </div>
     </div>

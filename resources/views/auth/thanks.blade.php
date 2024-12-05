@@ -10,11 +10,11 @@
                 <div class="buttons">
                     <form action="{{action('App\Http\Controllers\Auth\AuthenticatedSessionController@store')}}" method="post">
                     @csrf
-                        <button type="submit">ログインする</button>
+                        <button class="button__thanks" type="submit">ログインする</button>
                     </form>
                     <form method="POST" action="{{ route('verification.send') }}">
                     @csrf
-                        <button type="submit">認証メールを再送</button>
+                        <button class="button__thanks" type="submit">認証メールを再送</button>
                     </form>
                 </div>
             </div>

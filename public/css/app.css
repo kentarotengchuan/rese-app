@@ -58,21 +58,21 @@
     height: 100%;
 }
 
-.modal-content ul{
+.modal-ul{
     padding-top: 144px;
 }
-.modal-content li{
+.modal-li{
     text-align: center;
     padding-bottom: 24px;
 }
 
-.modal-content a{
+.modal-link{
     color: #305DFF;
     font-size: 28px;
     font-weight:500;
 }
 
-.modal-content ul button {
+.modal-logout-button{
     color: #305DFF;
     font-size: 28px;
     font-weight: 500;
@@ -88,7 +88,7 @@
     margin-right: 12px;
 }
 
-body{
+.body{
     background-color: #EEEEEE;
 }
 
@@ -98,7 +98,7 @@ body{
     align-items: center;
 }
 
-.header__inner>button{
+.menu-button{ 
     background-color: #305DFF;
     padding:6px;
     color:#FFFFFF;

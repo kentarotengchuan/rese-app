@@ -37,7 +37,7 @@
     align-items: end;
 }
 
-.form__username input {
+.input__username {
     margin-left: 1%;
     width: 95%;
     color: #4B4B4B;
@@ -51,7 +51,7 @@
     align-items: end;
 }
 
-.form__email input {
+.input__email {
     margin-left: 1%;
     width: 95%;
     color: #4B4B4B;
@@ -65,7 +65,7 @@
     align-items: end;
 }
 
-.form__password input {
+.input__password {
     margin-left: 1%;
     width: 95%;
     color: #4B4B4B;
@@ -78,7 +78,7 @@
     justify-content: right;
 }
 
-.button__outer button {
+.outer-button {
     background-color: #305DFF;
     color: #FFFFFF;
     padding: 6px 18px;

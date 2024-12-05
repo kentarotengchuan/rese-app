@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.nav button {
+.button__nav {
     background-color: #FFFFFF;
     color: #000000;
     font-weight: bold;
@@ -46,21 +46,21 @@
     font-size: 18px;
 }
 
-.form__review input {
+.input__review {
     border: 1px solid #000000;
 }
 
-.form__review select {
-    border: 1px solid #000000;
-    border-radius: 5px;
-}
-
-.form__review textarea {
+.select__review {
     border: 1px solid #000000;
     border-radius: 5px;
 }
 
-.form__review button {
+.textarea__review {
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+.button__review {
     margin: 24px 0 12px;
     padding: 12px 24px;
     border-radius: 5px;
@@ -73,7 +73,7 @@
         width: 100%;
     }
 
-    .box__review textarea {
+    .textarea__review {
         width: 90%;
     }
 }

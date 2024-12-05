@@ -48,7 +48,6 @@ class ShopController extends Controller
     public function like(Request $request,$id){
         $user = auth()->user();
 
-        // いいねの追加または解除
         if ($user->shops()->where('shop_id', $id)->exists()) {
             $user->shops()->detach($id);
         } else {
@@ -94,7 +93,7 @@ class ShopController extends Controller
 
     public function back(Request $request){
         $previousQuery = $request->session()->get('previous_query', []);
-        //dd($previousQuery);
+
         if(array_key_exists('area',$previousQuery)){
             $area = $previousQuery['area'];
         }else{
@@ -149,9 +148,6 @@ class ShopController extends Controller
             'qr_code_data' => uniqid(),
         ]);
 
-        //$fileName = "qr_codes/$reservation->qr_code_data.png";
-        //$reservation->update(['qr_code_data' => $fileName]);
-
         $shop = Shop::findOrFail($id);
 
         return view('done',compact('shop'));
@@ -201,7 +197,6 @@ class ShopController extends Controller
         }    
 
         $previousQuery = $request->session()->get('previous_query', []);
-            //dd($previousQuery);
         if(array_key_exists('area',$previousQuery)){
             $area = $previousQuery['area'];
         }else{
@@ -301,7 +296,6 @@ class ShopController extends Controller
             ->update([
                 'img_path' => $fileName    
             ]);
-            //Storage::delete('storage/shop_images/'.$shop->img_path);
         }
 
         $shop =Shop::findOrFail($request->id)
@@ -418,19 +412,15 @@ class ShopController extends Controller
     public function payment(Request $request)
     {
         try{
-        // Stripeシークレットキーをセット
         Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        // リクエストからユーザーが入力した金額を取得
         $amount = $request->input('amount');
         $name = $request->input('name');
 
-        // 金額のバリデーション（念のため）
         if ($amount < 1) {
             return response()->json(['error' => '金額が不正です'], 400);
         }
 
-        // StripeのCheckoutセッションを作成
         $session = Session::create([
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -439,7 +429,7 @@ class ShopController extends Controller
                     'product_data' => [
                         'name' => $name,
                     ],
-                    'unit_amount' => $amount, // 金額（最小単位、円の場合は100分の1単位）
+                    'unit_amount' => $amount,
                 ],
                 'quantity' => 1,
             ]],
@@ -448,7 +438,6 @@ class ShopController extends Controller
             'cancel_url' => route('payment.cancel'),
         ]);
 
-        // セッションIDを返す
         return response()->json(['id' => $session->id]);
         }catch(Exception $e){
         return response()->json(['error' => $e->getMessage()], 500);

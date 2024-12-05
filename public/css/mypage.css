@@ -79,12 +79,12 @@
     text-align: center;
 }
 
-.reservation-info td {
+.td__reservation {
     padding-left: 48px;
     padding-bottom: 24px;
 }
 
-.reservation-info>button {
+.button__reservation {
     margin-top: 24px;
     background-color: #FFFFFF;
     color: #305DFF;
@@ -92,7 +92,7 @@
     border-radius: 5px;
 }
 
-.reservation-info .buttons button {
+.button__buttons {
     margin-top: 24px;
     background-color: #FFFFFF;
     color: #305DFF;
@@ -108,11 +108,10 @@
     text-align: center;
 }
 
-.change-modal input {
+.input__change-modal{
     margin: 12px auto 0;
     background-color: #FFFFFF;
     color: #000000;
-
     border-radius: 5px;
 }
 
@@ -120,7 +119,7 @@
     margin-top: 12px;
 }
 
-.change-modal button {
+.button__change-modal {
     font-size: 12px;
     background-color: #305DFF;
     color: #FFFFFF;
@@ -136,7 +135,7 @@
     text-align: center;
 }
 
-.delete-modal button {
+.button__delete-modal {
     font-size: 12px;
     background-color: #305DFF;
     color: #FFFFFF;
@@ -185,7 +184,7 @@
     font-size: 18px;
 }
 
-.box__shop img {
+.img__shop {
     width: 100%;
     height: 240px;
     object-fit: cover;
@@ -201,7 +200,7 @@
     padding: 12px 5% 0 5%;
 }
 
-.tags__shop span {
+.tag {
     font-size: 18px;
 }
 
@@ -220,14 +219,15 @@
 }
 
 .heart {
-    font-size: 36px;
-    color: gray;
+    width: 36px;
+    height: 36px;
+    fill: gray;
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .heart.liked {
-    color: pink;
+    fill: pink;
 }
 
 @media screen and (max-width: 959px) {
@@ -247,7 +247,7 @@
         margin-top: 24px;
     }
 
-    .reservation-info td {
+    .td__reservation {
         padding: 0 0 6px 6px;
     }
 
@@ -255,7 +255,7 @@
         height: 300px;
     }
 
-    .box__shop img {
+    .img__shop {
         height: 150px;
     }
 

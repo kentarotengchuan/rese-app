@@ -1,4 +1,4 @@
-header {
+.header {
     display: inline-block;
 }
 
@@ -20,7 +20,7 @@ header {
     align-items: center;
 }
 
-.nav button {
+.button__nav {
     background-color: #FFFFFF;
     color: #000000;
     font-weight: bold;
@@ -35,7 +35,7 @@ header {
     font-weight: bold;
 }
 
-img {
+.img__shop {
     max-width: 100%;
     height: auto;
     object-fit: cover;
@@ -62,7 +62,7 @@ img {
     margin-top: 6px;
 }
 
-.form__reservation input {
+.input__reservation {
     display: block;
     padding: 4px 8px;
     border-radius: 5px;
@@ -71,7 +71,7 @@ img {
     width: 40%;
 }
 
-.form__reservation #time {
+.input__reservation-time {
     display: block;
     padding: 4px 8px;
     border-radius: 5px;
@@ -80,7 +80,7 @@ img {
     width: 95%;
 }
 
-.form__reservation select {
+.select__reservation {
     width: 95%;
     display: block;
     padding: 4px 8px;
@@ -112,10 +112,42 @@ img {
     border-radius: 0 0 5px 5px;
 }
 
-.button__inner button {
+.button__reservation {
     width: 100%;
     padding: 12px;
     border-radius: 0 0 5px 5px;
+}
+
+.box__comments{
+    padding: 0 72px 24px;
+    
+}
+
+.ttl__comments{
+    font-size: 24px;
+    margin-bottom:24px;
+}
+
+.box__comment{
+    margin-bottom: 12px;
+    padding:12px;
+    border: solid 1px #000000;
+    border-radius: 5px;
+    display: flex;
+}
+
+.username{
+    width:20%;
+}
+.rating{
+    width:10%;
+    border-left: solid 1px #000000;
+    padding-left: 5px;
+}
+.comment{
+    width:60%;
+    border-left: solid 1px #000000;
+    padding-left: 5px;
 }
 
 @media screen and (max-width: 959px) {
@@ -128,7 +160,7 @@ img {
 
     }
 
-    .form__reservation input {
+    .input__reservation {
         width: 95%;
     }
 
@@ -137,4 +169,3 @@ img {
     }
 }
 
-[e

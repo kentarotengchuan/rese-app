@@ -35,6 +35,10 @@ class Shop extends Model
         return $this->hasMany(Reservation::class);
     }
 
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
+
     public function likedOrNot(User $user){
         return $this->users()->where('user_id',$user->id)->exists();
     }

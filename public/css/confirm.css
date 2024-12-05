@@ -24,7 +24,7 @@
     cursor: pointer;
 }
 
-video {
+.video {
     width: 100%;
     height: auto;
 }
@@ -47,7 +47,7 @@ video {
     align-items: center;
 }
 
-.nav button {
+.button__nav {
     background-color: #FFFFFF;
     color: #000000;
     font-weight: bold;
@@ -94,7 +94,7 @@ video {
     color: #FFFFFF;
 }
 
-.reader button {
+.button__reader {
     background-color: #FFFFFF;
     color: #305DFF;
     padding: 12px 24px;
@@ -115,3 +115,4 @@ video {
     .box__reservation {
         font-size: 18px;
     }
+}

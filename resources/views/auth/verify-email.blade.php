@@ -10,11 +10,11 @@
                 <div class="buttons">
                     <form method="POST" action="{{ route('verification.send') }}">
                     @csrf
-                        <button type="submit">認証メールを再送</button>
+                        <button class="button__verify" type="submit">認証メールを再送</button>
                     </form>
                     <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                        <button type="submit">ログアウト</button>
+                        <button class="button__verify" type="submit">ログアウト</button>
                     </form>
                 </div>
             </div>

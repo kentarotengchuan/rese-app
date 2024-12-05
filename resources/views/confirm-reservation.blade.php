@@ -9,7 +9,7 @@
             <div class="nav">
                 <form action="{{ route('back') }}" method="post">
                 @csrf
-                <button type="submit"><</button>
+                <button class="button__nav" type="submit"><</button>
             </form>
                 <p class="ttl__create">予約状況の確認</p>
             </div>
@@ -38,15 +38,15 @@
                 </table>
                 @if($reservation->visited == 'no')
                 <div id="reader{{$reservation->id}}" class="reader">
-                    <button id="openModalButton{{$reservation->id}}">QRコードをスキャン</button>
+                    <button class="button__reader" id="openModalButton{{$reservation->id}}">QRコードをスキャン</button>
                 </div>
-                <!-- モーダル本体 -->
+
                 <div id="qrModal{{$reservation->id}}" class="qrmodal">
                     <div class="qrmodal-content">
                         <span id="closeModalButton{{$reservation->id}}" class="qrclose">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                         </span>
-                        <video id="video{{$reservation->id}}" autoplay></video>
+                        <video class="video" id="video{{$reservation->id}}" autoplay></video>
                     </div>
                 </div>
                 @endif
@@ -68,7 +68,7 @@
 
         messageElement{{$reservation->id}}.textContent = message;
         messageElement{{$reservation->id}}.classList.remove('success', 'error');
-        messageElement{{$reservation->id}}.classList.add(type);  // 'success' または 'error'
+        messageElement{{$reservation->id}}.classList.add(type);
         messageElement{{$reservation->id}}.style.display = 'block';
 
         if (type === 'success') {
@@ -81,34 +81,30 @@
     const closeModalButton{{$reservation->id}} = document.getElementById(`closeModalButton{{$reservation->id}}`);
     const video{{$reservation->id}} = document.getElementById(`video{{$reservation->id}}`);
 
-    // モーダルを開く処理
     openModalButton{{$reservation->id}}.addEventListener('click', () => {
         modal{{$reservation->id}}.style.display = 'flex';
         startCamera{{$reservation->id}}();
     });
 
-    // モーダルを閉じる処理
     closeModalButton{{$reservation->id}}.addEventListener('click', () => {
         modal{{$reservation->id}}.style.display = 'none';
         stopCamera{{$reservation->id}}();
     });
 
-    // カメラを起動する処理
     function startCamera{{$reservation->id}}() {
         const constraints{{$reservation->id}} = {
-            video: { facingMode: 'enviroment' } // 背面カメラを使う
+            video: { facingMode: 'enviroment' } 
         };
         navigator.mediaDevices.getUserMedia(constraints{{$reservation->id}})
             .then((stream) => {
                 video{{$reservation->id}}.srcObject = stream;
-                requestAnimationFrame(() => scanQRCode{{$reservation->id}}(video{{$reservation->id}})); // QRコードのスキャン開始
+                requestAnimationFrame(() => scanQRCode{{$reservation->id}}(video{{$reservation->id}}));
             })
             .catch((error) => {
                 console.error("カメラの起動に失敗しました:", error);
             });
     }
 
-    // カメラを停止する処理
     function stopCamera{{$reservation->id}}() {
         const stream{{$reservation->id}} = video{{$reservation->id}}.srcObject;
         const tracks{{$reservation->id}} = stream{{$reservation->id}}.getTracks();
@@ -116,7 +112,6 @@
         video{{$reservation->id}}.srcObject = null;
     }
 
-    // QRコードをスキャンする処理
     function scanQRCode{{$reservation->id}}(video{{$reservation->id}}) {
         if (video{{$reservation->id}}.videoWidth === 0 || video{{$reservation->id}}.videoHeight === 0) {
             requestAnimationFrame(() => scanQRCode{{$reservation->id}}(video{{$reservation->id}}));
@@ -134,23 +129,22 @@
 
         if (qrCode{{$reservation->id}}) {
             console.log('QRコードのデータ:', qrCode{{$reservation->id}}.data);
-            sendQrData{{$reservation->id}}(qrCode{{$reservation->id}}.data);  // 読み取ったQRコードのデータを送信
-            modal{{$reservation->id}}.style.display = 'none'; // QRコードスキャン後にモーダルを閉じる
+            sendQrData{{$reservation->id}}(qrCode{{$reservation->id}}.data);
+            modal{{$reservation->id}}.style.display = 'none';
             stopCamera{{$reservation->id}}();
         } else {
-            requestAnimationFrame(() => scanQRCode{{$reservation->id}}(video{{$reservation->id}})); // QRコードが見つかるまで繰り返す
+            requestAnimationFrame(() => scanQRCode{{$reservation->id}}(video{{$reservation->id}}));
         }
     }
 
-    // QRコードのデータをLaravelに送信する処理
     function sendQrData{{$reservation->id}}(qrCode) {
-        const reservationId{{$reservation->id}} = {{$reservation->id}}; // 必要なら予約IDを追加
+        const reservationId{{$reservation->id}} = {{$reservation->id}};
 
         fetch('/control/qr-code', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // CSRFトークン
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
             body: JSON.stringify({
                 qr_code_data: qrCode,
@@ -160,9 +154,9 @@
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                showMessage{{$reservation->id}}(data.message, 'success'); // 成功時メッセージを表示
+                showMessage{{$reservation->id}}(data.message, 'success'); 
             } else {
-                showMessage{{$reservation->id}}(data.message, 'error'); // 失敗時メッセージを表示
+                showMessage{{$reservation->id}}(data.message, 'error');
             }
             console.log('成功:', data);
         })

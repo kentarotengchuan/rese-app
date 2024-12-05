@@ -1,69 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Atte
+
+このアプリは勤怠管理アプリです。ユーザー作成、メール認証、ログインを経て勤怠登録画面に進むことができます。登録された勤怠データは日付ごと、ユーザーごとに管理画面から確認することができます。
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<img src="https://github.com/user-attachments/assets/9152740d-ab60-4f78-85dc-8a88bc2ed485">
 </p>
 
-## About Laravel
+## 作成した目的
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+模擬的な開発を通して実践に近い開発経験を積むため。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## アプリケーションURL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[デプロイのURL](http://www.mytestdomain8756.com)
 
-## Learning Laravel
+このアプリはユーザー登録と、メールアドレスを用いた認証によって利用することができます。
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 他のリポジトリ
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 機能一覧
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+・会員登録・・・Laravel Breezeを使用
 
-## Laravel Sponsors
+・ログイン・・・Laravel Breezeを使用
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+・ログアウト・・・Laravel Breezeを使用
 
-### Premium Partners
+・メール認証・・・Laravel Breezeを使用
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+・ユーザー情報取得
 
-## Contributing
+・ユーザー飲食店お気に入り一覧取得
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+・ユーザー飲食店予約情報取得
 
-## Code of Conduct
+・飲食店一覧取得
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+・飲食店詳細取得
 
-## Security Vulnerabilities
+・飲食店お気に入り追加
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+・飲食店お気に入り削除
 
-## License
+・飲食店予約情報追加
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+・飲食店予約情報削除
 
-./vendor/bin/sail artisan schedule:work
-# rese-app
+・エリアで検索する
+
+・ジャンルで検索する
+
+・店名で検索する
+
+・予約変更機能
+
+・評価機能
+
+・メール送信
+
+・QRコード照合
+
+・決済機能
+
+・リマインダー
+
+・管理画面
+
+## 使用技術（実行環境）
+
+PHP 8.2.24
+
+Laravel sail
+
+Laravel Breeze
+
+Laravel Framework 11.28.0
+
+EC2(Amazon Linux2)
+
+RDS(mysql 8.0.32)
+
+S3(デプロイ環境のストレージ)
+
+Mailpit v1.20.6（ローカル環境のみ）
+
+phpmyadmin(ローカル環境のみ)
+
+Stripe v16.1.1
+
+SimpleSoftware.io/simple-qrcode v2.0.0
+
+## テーブル設計
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/90addefe-e136-4671-868d-ea1e536b4ac9">
+</p>
+
+## ER図
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/ba709ad1-4e0c-41df-8827-70590de3db06">
+</p>
+
+## ローカル環境の構築手順
+
+1.コマンドライン上で任意のパスに「git clone」を行う。
+
+2.アプリディレクトリに移動し「sudo cp .env.example .env」を実行。
+
+3.「docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/var/www/html \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs」を実行してcomposerをインストール。
+
+4.「sudo chown -R {Linuxのユーザー名} atte-local」で所有者の変更。
+
+4.「./vendor/bin/sail up -d」を実行し、アプリを立ち上げる。
+
+5.「./vendor/bin/sail artisan key:generate」を実行し、キーを発行する。
+
+6.「./vendor/bin/sail artisan migrate:fresh」を実行し、マイグレーションする。
+
+7.「./vendor/bin/sail artisan db:seed」を実行し、テストユーザーを作成する。
+
+    管理者ユーザー
+        ユーザー名：test-administrator
+
+        メールアドレス：admin@test.com
+
+        パスワード：hogehoge
+
+    店舗代表者ユーザー
+        ユーザー名：test-owner
+
+        メールアドレス：owner@test.com
+
+        パスワード：hogehoge
+
+8.ブラウザ上でlocalhostにアクセスして、テストユーザーでログイン、もしくはユーザー作成→メール認証→ログインを行う。
+
+(ローカル環境では8025番ポートにおいてMailpitでの認証を行う)

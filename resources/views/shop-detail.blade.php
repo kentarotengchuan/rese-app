@@ -8,12 +8,12 @@
         <div class="nav">
             <form action="{{ route('back') }}" method="post">
             @csrf
-                <button type="submit"><</button>
+                <button class="button__nav" type="submit"><</button>
             </form>
             <span class="nav__ttl">{{$shop->name}}</span>
         </div>
         <div class="img__inner">
-            <img src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
+            <img class="img__shop" src="{{ asset('storage/shop_images/'.$shop->img_path) }}" alt="">
         </div>
         <div class="tags__shop">
             <span class="area-tag">#{{$shop->area->name}}</span>
@@ -46,9 +46,9 @@
             @enderror
             <form action="{{ route('reserve',['id'=>$shop->id]) }}" method="post" id="reservation">
             @csrf
-                <input type="date" name="date" id="date">
-                <input type="time" name="time" id="time">
-                <select name="number" id="number">
+                <input class="input__reservation" type="date" name="date" id="date">
+                <input class="input__reservation-time" type="time" name="time" id="time">
+                <select class="select__reservation" name="number" id="number">
                     <option value="1人" selected>1人</option>
                     <option value="2人">2人</option>
                     <option value="3人">3人</option>
@@ -79,35 +79,45 @@
             </div>   
         </div>
         <div class="button__inner">
-            <button type="submit" form="reservation">予約する</button>
+            <button class="button__reservation" type="submit" form="reservation">予約する</button>
         </div> 
     </div> 
+    </div>
+    <div class="box__comments">
+        <h2 class="ttl__comments">レビュー</h2>
+        @foreach ($shop->reviews as $review)
+            <div class="box__comment">
+                <p class="username">{{$review->user->name}}</p>
+                <p class="rating">★{{$review->rating}}</p>
+                <p class="comment">{{$review->content}}</p>
+            </div>
+        @endforeach
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#date').on('input', function() {
-                const date = $(this).val(); // 入力内容を取得
-                $('#output-date').text(date); // 表示エリアに反映
+                const date = $(this).val(); 
+                $('#output-date').text(date);
             });
         });
 
         $(document).ready(function() {
             $('#time').on('input', function() {
-                const time = $(this).val(); // 入力内容を取得
-                $('#output-time').text(time); // 表示エリアに反映
+                const time = $(this).val(); 
+                $('#output-time').text(time); 
             });
         });
 
         $(document).ready(function() {
-                const number = $(this).val(); // 入力内容を取得
-                $('#output-number').text('1人'); // 表示エリアに反映
+                const number = $(this).val(); 
+                $('#output-number').text('1人'); 
             });
 
         $(document).ready(function() {
             $('#number').on('input',function(){
-                const number = $(this).val(); // 入力内容を取得
-                $('#output-number').text(number); // 表示エリアに反映
+                const number = $(this).val(); 
+                $('#output-number').text(number); 
             });
         });
     </script>

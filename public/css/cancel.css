@@ -10,14 +10,14 @@
     text-align: center;
 }
 
-.box__success h1 {
+.ttl__success{
     margin-bottom: 24px;
     font-size: 24px;
     font-weight: bold;
     color: #000000;
 }
 
-.box__success a {
+.link__success{
     margin-top: 24px;
     font-size: 24px;
     padding: 12px 24px;
@@ -32,7 +32,7 @@
         padding: 24px;
     }
 
-    .box__success a {
+    .link__success {
         font-size: 12px;
         padding: 6px;
     }

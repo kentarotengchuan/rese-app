@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.nav button {
+.button__nav {
     background-color: #FFFFFF;
     color: #000000;
     font-weight: bold;
@@ -25,7 +25,7 @@
     font-weight: bold;
 }
 
-img {
+.img__shop {
     max-width: 480px;
     height: auto;
     object-fit: cover;
@@ -35,35 +35,28 @@ img {
     text-align: center;
 }
 
-.box__update input {
+.input__update {
     margin-top: 24px;
     padding: 12px 24px;
     border-radius: 5px;
     background-color: #FFFFFF;
 }
 
-.box__update textarea {
+.textarea__update {
     margin-top: 24px;
     padding: 12px 24px;
     border-radius: 5px;
     background-color: #FFFFFF;
 }
 
-.box__update input {
-    margin-top: 24px;
-    padding: 12px 24px;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-}
-
-.form__img input {
+.input__update-img {
     margin-top: 24px;
     padding: 0px;
     border-radius: 5px;
     background-color: #FFFFFF;
 }
 
-.box__update>form>button {
+.button__submit {
     margin-top: 24px;
     background-color: #305DFF;
     color: #FFFFFF;
@@ -72,17 +65,17 @@ img {
 }
 
 @media screen and (max-width: 959px) {
-    img {
+    .img__shop {
         max-width: 100%;
         height: auto;
         object-fit: cover;
     }
 
-    .box__update textarea {
+    .textarea__update {
         width: 100%;
     }
 
-    .form__img input {
+    .input__update-img {
         width: 100%;
     }
 }

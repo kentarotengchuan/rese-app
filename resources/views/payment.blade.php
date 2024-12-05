@@ -8,7 +8,7 @@
     <div class="nav">
         <form action="{{ route('back') }}" method="post">
         @csrf
-            <button type="submit"><</button>
+            <button class="button__nav" type="submit"><</button>
         </form>
         <h2 class="ttl">Stripe決済</h2>
     </div>
@@ -20,16 +20,15 @@
         <div class="form__review">
             <form id="payment">
                <label for="amount">金額(円):</label>
-               <input type="number" id="amount" name="amount" min="1" required>
+               <input class="input__review" type="number" id="amount" name="amount" min="1" required>
             </form>
             <div class="button__inner">
-            <button type="button" form="payment" id="payment-button">支払う</button>
+            <button class="button__review" type="button" form="payment" id="payment-button">支払う</button>
             </div>
         </div>
     </div>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        // Stripeの公開キーを使用
         const stripe = Stripe(`{{ env('STRIPE_KEY') }}`);
 
         document.getElementById('payment-button').addEventListener('click', function () {
