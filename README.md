@@ -117,15 +117,15 @@ SimpleSoftware.io/simple-qrcode v2.0.0
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs」を実行してcomposerをインストール。
 
-4.「sudo chown -R {Linuxのユーザー名} rese-app」で所有者の変更。
+4.一つ前のディレクトリに戻って「sudo chown -R {Linuxのユーザー名} rese-app」で所有者の変更。
 
-4.「./vendor/bin/sail up -d」を実行し、アプリを立ち上げる。
+5.再び、rese-appのディレクトリに戻って「./vendor/bin/sail up -d」を実行し、アプリを立ち上げる。
 
-5.「./vendor/bin/sail artisan key:generate」を実行し、キーを発行する。
+6.「./vendor/bin/sail artisan key:generate」を実行し、キーを発行する。
 
-6.「./vendor/bin/sail artisan migrate:fresh」を実行し、マイグレーションする。
+7.「./vendor/bin/sail artisan migrate:fresh」を実行し、マイグレーションする。
 
-7.「./vendor/bin/sail artisan db:seed」を実行し、テストユーザーを作成する。
+8.「./vendor/bin/sail artisan db:seed」を実行し、テストユーザーを作成する。
 
     管理者ユーザー
         ユーザー名：test-administrator
