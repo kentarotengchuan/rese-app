@@ -117,7 +117,7 @@ SimpleSoftware.io/simple-qrcode v2.0.0
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs」を実行してcomposerをインストール。
 
-4.「sudo chown -R {Linuxのユーザー名} atte-local」で所有者の変更。
+4.「sudo chown -R {Linuxのユーザー名} rese-app」で所有者の変更。
 
 4.「./vendor/bin/sail up -d」を実行し、アプリを立ち上げる。
 

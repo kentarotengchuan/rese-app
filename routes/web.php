@@ -13,10 +13,6 @@ Route::get('/thanks',[RegisteredUserController::class,'thanks'])->name('thanks')
 
 Route::middleware(['auth','verified'])->
 group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::get('/',[ShopController::class,'index'])->name('index');
     Route::post('/like/{id}',[ShopController::class,'like'])->name('like');
     Route::get('/control',[ShopController::class,'control'])->name('control');
